@@ -1,0 +1,92 @@
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+   "username": "Preetham",
+   "email" : "preetham@gmail.com",
+   "password": "Preetham@97"
+}
+
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+   "identifier": "Preetham",
+   "password": "Preetham@97"
+}
+
+
+
+###
+GET http://localhost:3000/members/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJQcmVldGhhbSIsImVtYWlsIjoicHJlZXRoYW1AZ21haWwuY29tIiwiaWF0IjoxNzIwNTAwNzU2LCJleHAiOjE3MjA1MTE1NTZ9.OT8Hg-RC1SJIrvGj5dnudv-WvB3SAkkkvwZDNmaLtl8
+# ###
+# GET http://localhost:3000/transactions/history/A123
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJOdXRoYW4iLCJlbWFpbCI6Im51dGhhbi5zQGNvbXZpdmEuY29tIiwiaWF0IjoxNzE2NTU2NjM4LCJleHAiOjE3MTY1Njc0Mzh9.mEvuh8jt_tqX4zWuwHN6DD_OqyxcyETroyGHzcYHCMI
+
+# ###
+# DELETE http://localhost:3000/members/A124
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1andhbCIsImVtYWlsIjoidWp3YWwubEBjb212aXZhLmNvbSIsImlhdCI6MTcxNjU1OTg2NywiZXhwIjoxNzE2NTcwNjY3fQ.XwT5EHFjfb6rwoHimG56x9dHQIXe1YCDCrdUuDjcMLo
+
+ 
+
+
+###
+POST http://localhost:5000/api/categories
+Content-Type: application/json
+
+{
+    "name": "Work",
+    "color": "#FF5733"
+}
+
+
+###
+POST http://localhost:3000/transactions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJQcmVldGhhbSIsImVtYWlsIjoicHJlZXRoYW1AZ21haWwuY29tIiwiaWF0IjoxNzIwNTg1NTU5LCJleHAiOjE3MjA1OTYzNTl9.fWv0NwffXAttG_h5dviuou2sWk9FsUMzJrICkNdFM3g
+Content-Type: application/json
+
+{
+    "member_id":"M1",
+    "name":"preetham",
+    "points_updated":"10",
+    "description":"Points credit",
+    "type":"credit",
+    "updated_by":"admin",
+    "status":"completed"
+}
+
+###
+GET http://localhost:3000/transactions/history/M1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJQcmVldGhhbSIsImVtYWlsIjoicHJlZXRoYW1AZ21haWwuY29tIiwiaWF0IjoxNzIwNTg1NTU5LCJleHAiOjE3MjA1OTYzNTl9.fWv0NwffXAttG_h5dviuou2sWk9FsUMzJrICkNdFM3g
+Content-Type: application/json
+
+
+###
+GET http://localhost:3000/transactions/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJQcmVldGhhbSIsImVtYWlsIjoicHJlZXRoYW1AZ21haWwuY29tIiwiaWF0IjoxNzIwNjAwMjY1LCJleHAiOjE3MjA2MTEwNjV9._Wuoe7yx6WUaL3EpurAiNozduKhGNmSGbc1k28qBDkI
+Content-Type: application/json
+
+
+###
+POST http://localhost:3000/members/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJQcmVldGhhbSIsImVtYWlsIjoicHJlZXRoYW1AZ21haWwuY29tIiwiaWF0IjoxNzIwNjIyOTY5LCJleHAiOjE3MjA2MzM3Njl9.S8dO2yKyTVMSNifyiGwJa63vZlmK50RNl7fUmj8Rhf4
+Content-Type: application/json
+
+{"member_id":"m11235",
+"name":"user3",
+"email":"user231@gmail.com",
+"points":0}
+
+
+###
+POST http://localhost:3000/members/M123
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJQcmVldGhhbSIsImVtYWlsIjoicHJlZXRoYW1AZ21haWwuY29tIiwiaWF0IjoxNzIwNjAwMjY1LCJleHAiOjE3MjA2MTEwNjV9._Wuoe7yx6WUaL3EpurAiNozduKhGNmSGbc1k28qBDkI
+Content-Type: application/json
+
+{
+   
+"name":"user3",
+"email":"user2@gmail.com",
+"points":0}
