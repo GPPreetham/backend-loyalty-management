@@ -39,69 +39,69 @@ const getUsers = async (req, res) => {
   }
 };
 // Add a new member
-// const addMember = async (req, res) => {
-//   const { name, email, member_id, points } = req.body;
-
-//   try {
-//     const { data, error } = await supabase
-//       .from("members")
-//       .insert([{ name, email, member_id, points }])
-//       .select("*");
-
-//     if (error) {
-//       console.error("Error adding member:", error);
-//       return res.status(500).json({
-//         status: "error",
-//         message: "An error occurred while adding the member",
-//       });
-//     }
-
-//     res.status(200).json({
-//       status: "success",
-//       message: "Member created successfully",
-//       data: data[0],
-//     });
-//   } catch (error) {
-//     console.error("Error:", error);
-//     res.status(500).json({ status: "error", message: error.message });
-//   }
-// };
-
 const addMember = async (req, res) => {
   const { name, email, member_id, points } = req.body;
 
   try {
-    // Check if email or member_id already exists
-    const { data: existingMembers, error } = await supabase
+    const { data, error } = await supabase
       .from("members")
-      .select("*")
-      .or(`email.eq.${email},member_id.eq.${member_id}`);
+      .insert([{ name, email, member_id, points }])
+      .select("*");
 
     if (error) {
-      console.error("Error checking existing members:", error);
+      console.error("Error adding member:", error);
       return res.status(500).json({
         status: "error",
-        message: "An error occurred while checking existing members",
+        message: "An error occurred while adding the member",
       });
     }
 
-    if (existingMembers && existingMembers.length > 0) {
-      const existingMember = existingMembers.find(
-        (member) => member.email === email || member.member_id === member_id
-      );
+    res.status(200).json({
+      status: "success",
+      message: "Member created successfully",
+      data: data[0],
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ status: "error", message: error.message });
+  }
+};
 
-      if (existingMember.email === email) {
-        return res.status(201).json({
-          status: "error",
-          message: "Email already exists.",
-        });
-      } else if (existingMember.member_id === member_id) {
-        return res.status(202).json({
-          status: "error",
-          message: "Member ID already exists.",
-        });
-      }
-    }
+// const addMember = async (req, res) => {
+//   const { name, email, member_id, points } = req.body;
+
+//   try {
+//     // Check if email or member_id already exists
+//     const { data: existingMembers, error } = await supabase
+//       .from("members")
+//       .select("*")
+//       .or(`email.eq.${email},member_id.eq.${member_id}`);
+
+//     if (error) {
+//       console.error("Error checking existing members:", error);
+//       return res.status(500).json({
+//         status: "error",
+//         message: "An error occurred while checking existing members",
+//       });
+//     }
+
+//     if (existingMembers && existingMembers.length > 0) {
+//       const existingMember = existingMembers.find(
+//         (member) => member.email === email || member.member_id === member_id
+//       );
+
+//       if (existingMember.email === email) {
+//         return res.status(201).json({
+//           status: "error",
+//           message: "Email already exists.",
+//         });
+//       } else if (existingMember.member_id === member_id) {
+//         return res.status(202).json({
+//           status: "error",
+//           message: "Member ID already exists.",
+//         });
+//       }
+//     }
 
     // If no existing member found, proceed with adding new member
     const { data, error: insertError } = await supabase
