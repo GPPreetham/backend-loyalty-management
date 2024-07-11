@@ -104,29 +104,29 @@ const addMember = async (req, res) => {
 //     }
 
     // If no existing member found, proceed with adding new member
-    const { data, error: insertError } = await supabase
-      .from("members")
-      .insert([{ name, email, member_id, points }])
-      .select("*");
+//     const { data, error: insertError } = await supabase
+//       .from("members")
+//       .insert([{ name, email, member_id, points }])
+//       .select("*");
 
-    if (insertError) {
-      console.error("Error adding member:", insertError);
-      return res.status(500).json({
-        status: "error",
-        message: "An error occurred while adding the member",
-      });
-    }
+//     if (insertError) {
+//       console.error("Error adding member:", insertError);
+//       return res.status(500).json({
+//         status: "error",
+//         message: "An error occurred while adding the member",
+//       });
+//     }
 
-    res.status(200).json({
-      status: "success",
-      message: "Member created successfully",
-      data: data[0],
-    });
-  } catch (error) {
-    console.error("Error:", error);
-    res.status(500).json({ status: "error", message: error.message });
-  }
-};
+//     res.status(200).json({
+//       status: "success",
+//       message: "Member created successfully",
+//       data: data[0],
+//     });
+//   } catch (error) {
+//     console.error("Error:", error);
+//     res.status(500).json({ status: "error", message: error.message });
+//   }
+// };
 
 // Delete a member by member_id
 const deleteMember = async (req, res) => {
